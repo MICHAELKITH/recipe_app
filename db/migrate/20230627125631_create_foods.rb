@@ -6,7 +6,6 @@ class CreateFoods < ActiveRecord::Migration[7.0]
       t.decimal :Price
       t.integer :Quantity
       t.timestamps
-      t.references :users foreign_key: true
     end
   end
 end
