@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateFoods < ActiveRecord::Migration[7.0]
   def change
     create_table :foods, id: :primary_key do |t|
