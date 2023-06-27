@@ -25,7 +25,7 @@ development:
   <<: *default
   database: recipe_app
   username: postgres
-  password: pass
+  password: slofile
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -84,5 +84,5 @@ test:
 production:
   <<: *default
   database: recipe_app_production
-  username: recipe_app
-  password: <%= ENV["RECIPE_APP_DATABASE_PASSWORD"] %>
+  username: postgres
+  password: slofile
