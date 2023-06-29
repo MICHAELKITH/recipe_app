@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_27_130750) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_29_065721) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_27_130750) do
     t.integer "Quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.bigint "recipe_id", null: false
+    t.bigint "food_id", null: false
+    t.index ["food_id"], name: "index_food_recipes_on_food_id"
+    t.index ["recipe_id"], name: "index_food_recipes_on_recipe_id"
+    t.index ["user_id"], name: "index_food_recipes_on_user_id"
   end
 
   create_table "foods", force: :cascade do |t|
@@ -27,6 +33,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_27_130750) do
     t.integer "Quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_foods_on_user_id"
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string "Name"
+    t.time "PreparationTime"
+    t.time "CookingTime"
+    t.text "Description"
+    t.boolean "Public"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -35,4 +55,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_27_130750) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "food_recipes", "foods"
+  add_foreign_key "food_recipes", "recipes"
+  add_foreign_key "food_recipes", "users"
+  add_foreign_key "foods", "users"
+  add_foreign_key "recipes", "users"
 end
