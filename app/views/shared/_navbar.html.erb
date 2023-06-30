@@ -5,9 +5,9 @@
       <%= button_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger' %>
     </div>
   <% else %>
-    <div class="mx-auto" style="width: fit-content;">
+    <div class="mx-auto">
       <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary mr-2' %>
-      <%= link_to 'Signup', new_user_registration_path, class: 'btn btn-secondary' %>
+      <%= link_to 'Sign-up', new_user_registration_path, class: 'btn btn-secondary' %>
     </div>
   <% end %>
 </div>

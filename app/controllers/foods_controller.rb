@@ -13,10 +13,10 @@ class FoodsController < ApplicationController
     @food.user = current_user
 
     if @food.save
-      flash[:success] = 'Food succesfully added'
+      flash[:success] = 'Succesfully added Food'
       redirect_to foods_path
     else
-      flash[:error] = 'Error: Food could not be added'
+      flash[:error] = 'Sorry: Could not delete food'
       render :new
     end
   end
@@ -25,7 +25,7 @@ class FoodsController < ApplicationController
     @food = Food.find(params[:id])
     @food.destroy
 
-    flash[:notice] = 'You deleted food successfully'
+    flash[:notice] = 'Food successfully delete'
     redirect_back(fallback_location: root_path)
   end
 
