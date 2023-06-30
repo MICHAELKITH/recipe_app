@@ -1,4 +1,5 @@
 class FoodsController < ApplicationController
+  before_action :authenticate_user!, except: [:show]
   def index
     @foods = current_user.foods
   end
