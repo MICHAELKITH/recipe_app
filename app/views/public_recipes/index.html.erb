@@ -1,22 +1,19 @@
 <%= render '/shared/navbar'%>
-<h1 style="text-align: center; margin-top: 50px;">Welcome to the recipe app</h1>
+<h1 style="text-align: center; margin-top: 50px;">Public Recipes</h1>
 <div class = 'container'>
 <% @recipes.each do |recipe|%>
-<div class = 'recipe_container'>
+<div style="font-weight: bold; --bs-bg-opacity: .25;"  class = 'shadow p-3 mb-5 bg-body-tertiary rounded bg-primary p-2 recipe_container border border-dark p-4 m-2 d-flex justify-content-between'>
 <div class = 'recipe_heading'>
-<%= recipe.name %>
+<h2><%= link_to recipe.name, recipe_path(recipe.id) %></h2>
 <div class = 'btn_recipe_remove'>
-<%= "By: #{recipe.user.name}" %>
+<h4><%= "By: #{recipe.user.name}" %></h4>
 </div>
+</div>
+<div class = 'recipe_text pr-3'>
 
+ <h4><%= "Total Food Items: #{recipe.foods.size}" %></h4>
+<h4><%= "Total Price: #{recipe.foods.all.sum(:price)}" %></h4> 
 </div>
-<div class = 'recipe_text'>
-<%=begin%>
- <p><%= @foods.count %></p>
-<p><%= @total_price %></p> 
-<%=end%>
-<div>
+</div>
 <%end%>
-</div>
-
 </div>
