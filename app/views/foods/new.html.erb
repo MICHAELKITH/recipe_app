@@ -1,1 +1,15 @@
-<h3>Add new food here <h3>
+<%= form_with model: @food  do |form| %>
+
+    <div class="mb-3">
+     <%= form.text_field :name, placeholder:"Enter Food name", class:" text-base px-4 py-2 border mb-3 border-gray-300 rounded-lg focus:outline-none focus:border-green-400"%>
+   </div>
+    <div class="mb-3">
+        <%= form.select :measurement_unit, [["grams"], ["kilos"], ["liters"], ["milliliters"]], class:"text-base px-4 py-2 border mb-3 border-gray-300 rounded-lg focus:outline-none focus:border-green-400"%>
+     </div>
+     <div class="mb-3">
+     <%= form.text_area :price, placeholder:"Enter Your Price", class:" text-base px-4 py-2 border mb-3 border-gray-300 rounded-lg focus:outline-none focus:border-green-400" %>
+     </div>
+    <div class="mb-3">
+      <%= form.submit "Add New Food", class:"bg-red-500 px-4 py-2 font-semibold text-white inline-flex items-center space-x-2 rounded" %>
+     </div>
+  <% end %> 

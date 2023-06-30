@@ -1,3 +1,36 @@
-<h2>Welcome to Foods index </h2>
+<%= render '/shared/navbar'%>
+<div class="mt-40 ">
+  <table class="m-auto border border-slate-500 ">
+    <thead>
+      <tr class="bg-blue-500 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+        <th scope='col'> Food </th>
+        <th> Measurement Unit </th>
+        <th> Price </th>
+        <th> Actions </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @foods.each do |food| %>
+        <tr>
+          <td>
+            <%= food.name %>
+            </td>
+        <td>
+            <%=food.measurement_unit%>
+        </td>
+            <td>
+            <%= "$#{food.price.to_i}"%>
+            </td>
 
-<button class = 'add-food'><%= link_to 'Add Food', new_food_path%></button>
+          <td><%= button_to "Delete", food_path(food.id), method: :delete, data: { confirm: "Are you sure?" } %></td>
+
+        </tr>
+
+      <% end %>
+
+    </tbody>
+  </table>
+  <div class="flex justify-center items-center mt-3">
+  <button class = 'add-food'><%= link_to 'Add Food', new_food_path%></button>
+  </div>
+</div> 
