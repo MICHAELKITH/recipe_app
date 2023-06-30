@@ -1,0 +1,16 @@
+<%= render '/shared/navbar'%>
+<h2>Add Ingredients</h2>
+<div class = "add_new_ingredient">
+<%= form_with model: @recipe_food, url: recipe_recipe_foods_path(params[:recipe_id]), method: :post, local: true do |form| %>
+<div class = "select_ingredient">
+  <%= form.select :food_id, current_user.foods.all.map {|food| [food.name, food.id]} %>
+  </div>
+  <%= form.label :quantity %>
+  <div class = "food_quantity">
+  <%= form.number_field :quantity %>
+  </div>
+      <div class = "btn_add_ingredient">
+  <%= form.submit class: 'btn_add_ingredient' %>
+  </div>
+ <% end %>
+</div>
