@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'rails_helpers'
 
 RSpec.describe Recipe, type: :model do
   before :each do
