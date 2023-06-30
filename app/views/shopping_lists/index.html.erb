@@ -5,32 +5,32 @@
 <h1 class='text-center' style="margin-bottom: 30px;">Shopping list </h1>
 <div style="display: flex; justify-content: space-around; margin-bottom: 40px;">
     <h4>Amount of food items to buy: <span><%= @foods.length %></span> </h4>
-    <h4>Total value of food needed: <span>$<%= @total_price %> </span></h4>
+    <h4>Total value of food needed: <span>$<%= @total_price * -1 %> </span></h4>
 </div>
 
 <div class="mt-2">
-    <% if @foods.length.zero? %>
-      <h3 class="text-2xl font-bold text-center text-indigo-600">
-       Please add your recipe first!
-      </h3>
-    <% else %>
-      <table class="m-auto border border-slate-500">
-        <thead>
+  <% if @foods.length.zero? %>
+    <h3 class="text-2xl font-bold text-center text-indigo-600">
+      You have everything needed to make that recipe!
+    </h3>
+  <% else %>
+    <table class="table table-striped mx-auto" style="width: 500px;">
+      <thead class="bg-primary text-white">
+        <tr>
+          <th scope="col">Food</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Total Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @foods.each do |f| %>
           <tr>
-            <th class="border border-slate-600 p-4"> Food </th>
-            <th class="border border-slate-600 p-4"> Quantity </th>
-            <th class="border border-slate-600 p-4"> Total Price </th>
+            <td><%= f[:name] %></td>
+            <td><%= f[:quantity] * -1 %></td>
+            <td>$<%= f[:price] * -1 %></td>
           </tr>
-        </thead>
-        <tbody>
-          <% @foods.each do |shopping_list| %>
-            <tr>
-              <td class="border border-slate-600 p-4" ><%= shopping_list[:name] %></td>
-              <td class="border border-slate-600 p-4" ><%= shopping_list[:quantity] %></td>
-              <td class="border border-slate-600 p-4" >$<%= shopping_list[:total_price] %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    <%end%>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 </div>
