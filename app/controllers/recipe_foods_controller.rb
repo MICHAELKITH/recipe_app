@@ -7,10 +7,10 @@ class RecipeFoodsController < ApplicationController
     @recipe_food = RecipeFood.new(recipe_food_params)
     @recipe_food.recipe_id = params[:recipe_id]
     if @recipe_food.save
-      flash[:success] = 'Recipe Food succesfully added'
+      flash[:success] = 'Succesfully added food recipe'
       redirect_to recipe_path(params[:recipe_id])
     else
-      flash[:error] = 'Error: Recipe Food could not be added'
+      flash[:error] = 'Error: Failed to add Food recipe'
       render :new
     end
   end
@@ -20,7 +20,7 @@ class RecipeFoodsController < ApplicationController
     @food = @recipe.foods.find(params[:id])
     @recipe_food = RecipeFood.find_by(food_id: @food.id)
     @recipe_food.destroy
-    flash[:notice] = 'Ingredient removed successfully'
+    flash[:notice] = 'Food Recipe removed successfully'
     redirect_back(fallback_location: root_path)
   end
 
