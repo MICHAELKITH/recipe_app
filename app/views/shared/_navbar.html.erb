@@ -1,0 +1,17 @@
+<% if current_user.present?%>
+<div style="display: flex; justify-content: flex-end; margin-right: 50px;">
+  <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+</div>
+<%end%>
+<nav class = 'navbar'>
+<div class = 'home'><%= link_to 'Home', root_path %></div>
+<%if current_user.present?%>
+<%= "Welcome #{current_user.name}"%>
+<%else%>
+<div class = 'home'><%= link_to 'Login', new_user_session_path %></div>
+<div class = 'home'><%= link_to 'Sign-up', new_user_registration_path %></div>
+<%end%>
+<div class = 'home'><%= link_to 'Food List', foods_path %></div>
+<div class = 'home'><%= link_to 'Recipes List', recipes_path %></div>
+<div class = 'home'><%= link_to 'Shopping List', shopping_lists_path %></div>
+</nav>
