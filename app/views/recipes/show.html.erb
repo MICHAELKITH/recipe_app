@@ -1,6 +1,44 @@
-<h2>First Recipe</h2>
-
 <%= render '/shared/navbar'%>
+<div class = 'container'>
+<div class = 'upper_secion'>
+<div class = "recipe_heading">
+<h2> <%=@recipe.name %></h2>
+</div>
+<div class = 'recipe_details'>
+<p><%= "Preparation Time: #{@recipe.preparation_time} hour"%><p>
+<p><%= "Cooking Time: #{@recipe.cooking_time} hour"%><p>
+<p><%= "Steps to prepare: #{@recipe.description}"%><p>
+</div>
+</div>
+<div class = 'buttons'>
+<button class = 'btn_gen_shopping_list'><%= link_to 'Generate Shopping List', root_path %></button>
+<button class = 'btn_add_ingredient'><%= link_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe.id) %></button>
+</div>
+
+<div class = 'table'>
+<table style="width:100%">
+  <tr>
+    <th>Food</th>
+    <th>Quantity</th>
+    <th>Value</th>
+    <th>Actions</th>
+  </tr>
+  <tr>
+  <%@recipe.foods.each |food| do %>
+    <td><%= food.name %></td>
+    <%@quantity = RecipeFood.find_by(food_id: food.id).quantity%>
+      <td> <%= @quantity %> </td>
+    <td><%= "$ #{food.price * @quantity}" %></td>
+    <% if !current_user.nil? && current_user.id == @recipe.user_id%>
+      <td> <%= button_to "remove", recipe_recipe_food_path(@recipe.id, food.id), method: :delete%>
+      <%end%>
+      </td>
+  </tr>
+  <%end%>
+  </table>
+</div>
+</div>
+
 <div class="custom-control custom-switch">
   <input type="checkbox" class="custom-control-input" id="customSwitch1">
   <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
