@@ -1,0 +1,33 @@
+<div>
+<%= render '/shared/navbar'%>
+</div>
+
+<h3 style='text-align: center; margin-top: 20px;'>Add new food here <h3>
+
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <%= form_with model: @food do |form| %>
+        <div class="form-group">
+          <%= form.label :name, "Food Name" %>
+          <%= form.text_field :name, placeholder: "Enter Food name", class: "form-control mb-3 mt-1" %>
+        </div>
+        <div class="form-group">
+          <%= form.label :measurement_unit, "Measurement Unit" %>
+          <%= form.select :measurement_unit, [["grams"], ["kilos"], ["liters"], ["milliliters"]], {}, class: "form-control mb-3 mt-1" %>
+        </div>
+        <div class="form-group">
+          <%= form.label :price, "Price" %>
+          <%= form.number_field :price, placeholder: "Enter Your Price", class: "form-control mb-3 mt-1" %>
+        </div>
+        <div class="form-group">
+          <%= form.label :quantity, "Quantity" %>
+          <%= form.number_field :quantity, placeholder: "Enter Your Quantity", class: "form-control mb-3 mt-1" %>
+        </div>
+        <div class="form-group">
+          <%= form.submit "Add New Food", class: "btn btn-primary mt-4" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

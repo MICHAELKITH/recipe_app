@@ -1,0 +1,32 @@
+
+<%= render '/shared/navbar'%>
+<div class="container mt-4">
+  <div class="d-flex justify-content-end mb-3">
+    <%= link_to 'Add Food', new_food_path, class: 'btn btn-primary' %>
+  </div>
+  <table class="table table-striped">
+    <thead class="bg-primary text-white">
+      <tr>
+        <th scope="col">Food</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Measurement Unit</th>
+        <th scope="col">Price</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @foods.each do |food| %>
+        <tr>
+          <td><%= food.name %></td>
+          <td><%= food.quantity.to_i %></td>
+          <td><%= food.measurement_unit %></td>
+          <td><%= "$#{food.price.to_i}" %></td>
+          <td>
+            <%= button_to "Delete", food_path(food.id), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
