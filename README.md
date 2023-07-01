@@ -59,20 +59,10 @@
 ### Key Features <a name="key-features"></a>
 
 - **Authentication**
-- **Add and remove data**
+- **Add and remove data and connect to database**
 - **Authorization**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- LIVE DEMO -->
-
-<!--## 🚀 Live Demo <a name="live-demo"></a>
-
-> Add a link to your deployed project.
-
-- [Live Demo Link](https://google.com)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>-->
 
 <!-- GETTING STARTED -->
 
