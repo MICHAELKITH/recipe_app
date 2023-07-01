@@ -4,7 +4,7 @@ RSpec.describe RecipeFood, type: :model do
   let(:recipe) { Recipe.new(name: 'Pizza') }
   let(:food) { Food.new(name: 'Cheese', measurement_unit: 'grams', price: 10, quantity: 10) }
 
-  subject(:recipe_food) { described_class.new(recipe: recipe, food: food, quantity: 2) }
+  subject(:recipe_food) { described_class.new(recipe:, food:, quantity: 2) }
 
   it 'belongs to a recipe' do
     expect(recipe_food.recipe).to eq(recipe)

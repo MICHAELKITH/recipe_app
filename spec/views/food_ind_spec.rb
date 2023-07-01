@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Foods', type: :feature do
   include Devise::Test::IntegrationHelpers
-  
+
   describe 'index' do
     before(:each) do
       @user = User.create(name: 'John Doe', email: 'john@example.com', password: 'password')
